@@ -4,3 +4,4 @@ Loving Joko Widodo,Loving Joko Widodo.txt,4
 Peresmian 2 Ruas Tol,Peresmian 2 Ruas Tol.txt,2
 Youtube.Com,Youtube.Com.txt,2
 Test2,Test2.txt,1
+Book,Book.txt,20

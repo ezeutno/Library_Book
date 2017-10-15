@@ -4,7 +4,16 @@ class Add:
         self.__content = content
 
     def addAccount(self,fname,lname,gender,email,birthday,p):
-        username = fname.upper()[0]+lname.upper()[0]+birthday.split('/')[0]+str(random.randint(0,999))
+        while True:
+            username = fname.upper()[0]+lname.upper()[0]+birthday.split('/')[0]+str(random.randint(0,999))
+            count = 0
+            for i in self.__content:
+                if username == i[0]:
+                    continue
+                else:
+                    count += 1
+            if count == len(self.__content):
+                break
         while True:
             password = input('Please input password ')
             ver_password = input('Please input password verification ')

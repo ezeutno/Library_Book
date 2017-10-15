@@ -1,5 +1,5 @@
-from Library_Book.Assignment_3.Add import Add
-from Library_Book.Assignment_3.Edit import Edit
+from Add import Add
+from Edit import Edit
 
 
 class Account_Class(Add, Edit):

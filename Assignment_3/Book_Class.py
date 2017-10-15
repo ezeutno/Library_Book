@@ -1,5 +1,5 @@
-from Library_Book.Assignment_3.Add import Add
-from Library_Book.Assignment_3.Edit import Edit
+from Add import Add
+from Edit import Edit
 
 class BookClass(Add,Edit):
     def __init__(self,book_content):
@@ -19,7 +19,16 @@ class BookClass(Add,Edit):
         up_date.close()
 
     def bookAdd(self):
-        book_name = input('Please input book name ').title()
+        while True:
+            book_name = input('Please input book name ').title()
+            count = 0
+            for i in self.__content:
+                if book_name == i[0]:
+                   print('Book already exisit!')
+                else :
+                    count += 1
+            if count == len(self.__content):
+                break
         book_qty = input('Please input book quantity ')
         Add.addBook(self,book_name,book_qty)
 

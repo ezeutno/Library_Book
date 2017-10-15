@@ -1,9 +1,10 @@
-from Library_Book.Assignment_3.Account_Class import Account_Class
-from Library_Book.Assignment_3.Book_Class import BookClass
+from Account_Class import Account_Class
+from Book_Class import BookClass
 
 display = {
     'MENU' : ['Log in','Create Account','EXIT'],
-    'MENU MASTER': ['Display Book','Display Account','Add Book','Edit Book','Add Master Account','Edit Account','EXIT'],
+    'MENU MASTER': ['Display Book','Display Account','Add Book','Edit Book','Add Master Account','Edit Password',
+                    'Edit Account','EXIT'],
     'LIBRARY MENU' : ['Display Book','Read on Spot','Borrow Book','Book\'s you borrow','Return Books',
                       'Change your password','EXIT'],
 }
@@ -18,7 +19,7 @@ def display_output(menu_type):
     print('#'*(x*2+len(menu_type)+3))
 
 def buffer_zone():
-    input('Press enter to continue? ')
+    input('Press enter to continue! ')
 
 all_book = []
 open_lbook = open('Data_Base\\List_Book.txt', "r")
@@ -53,6 +54,10 @@ while True:
                             while True:
                                 display_output('Menu Master')
                                 l = input('Input your command!')
+                                num = 0
+                                for i in range(len(all_acc)):
+                                    if username.upper() == all_acc[i][0]:
+                                        num = i
                                 if l == '1':
                                     display_output('Display Book')
                                     BookClass(all_book).displayBook()
@@ -77,16 +82,21 @@ while True:
                                 elif l == '5':
                                     display_output('Add Master Account')
                                     Account_Class(all_acc).accountAdd('1')
+                                    Account_Class(all_acc).updateAccount()
                                     buffer_zone()
                                 elif l == '6':
+                                    display_output('Edit Password')
+                                    Account_Class(all_acc[num]).passwordEdit()
+                                    Account_Class(all_acc).updateAccount()
+                                elif l == '7':
                                     display_output('Edit Account')
                                     z = input('Which username you wish to edit?')
                                     for i in all_acc:
                                         if z.upper()==i[0]:
                                             Account_Class(i).editAccount()
-                                            Account_Class(i).updateAccount()
+                                            Account_Class(all_acc).updateAccount()
                                     buffer_zone()
-                                elif l == '7':
+                                elif l == '8':
                                     break
                                 else :
                                     print('Wrong input!')
@@ -143,7 +153,7 @@ while True:
             buffer_zone()
         elif x == '3':
             print('Thank you for visiting')
-            buffer_zone()
+            input('Press enter to exit!')
             break
         else :
             print('Wrong input!')
