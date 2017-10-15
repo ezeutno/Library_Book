@@ -1,0 +1,2 @@
+MASTER;;|||;;;1
+IE24551;12345689;Ivan|Ezechial|Male|ivan.suratno@gmail.com;24/09/1999;;0
