@@ -65,16 +65,22 @@ class BookClass(Add,Edit):
         book = input('Which book do you want to borrow?')
         for i in self.__content:
             if book.title() == i[0]:
-                while True:
-                    amt = int(input('How many book you want to borrow?'))
-                    if amt <= int(i[-1]):
-                        Edit(i).editQty(str(int(i[-1])-amt))
-                        for a in range (amt):
-                            account[-2].append(i[0])
-                        break
-                    else :
-                        print('Sorry, We only got {0}.'.format(i[-1]))
-        print('The book you have borrow is {0}.'.format(book.upper()))
+                if int(i[-1]) > 0:
+                    while True:
+                        amt = int(input('How many book you want to borrow?'))
+                        if amt > 0:
+                            if amt <= int(i[-1]):
+                                Edit(i).editQty(str(int(i[-1])-amt))
+                                for a in range (amt):
+                                    account[-2].append(i[0])
+                                print('The book you have borrow is {0}.'.format(book.title()))
+                                break
+                            else :
+                                print('Sorry, We only got {0}.'.format(i[-1]))
+                        elif amt == 0:
+                            continue
+                else:
+                    print('Book out off stock!')
 
     def displayBook_Acc(self,account):
         count = len(account[-2])
@@ -92,11 +98,12 @@ class BookClass(Add,Edit):
 
     def returnBook(self,account):
         BookClass(self.__content).displayBook_Acc(account)
-        book = int(input('\nWhich book do you want to return?'))
-        account[-2].pop(book-1)
-        for i in self.__content:
-            if account[book-1] == i[0]:
-                Edit(i).editQty(str(int(i[2])+1))
+        if len(account[-2])!=0:
+            book = int(input('Which book do you want to return?'))
+            account[-2].pop(book-1)
+            for i in self.__content:
+                if account[book-1] == i[0]:
+                    Edit(i).editQty(str(int(i[2])+1))
 
     def readOnspot(self):
         path = 'Book_List\\{0}'.format(self.__content[1])

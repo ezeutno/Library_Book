@@ -1,2 +1,8 @@
-MASTER;12345678;|||;;;1
+MASTER;qwertyuiop;|||;;;1
 IE24551;12345678;Ivan|Ezechial|Male|ivan.suratno@gmail.com;24/09/1999;;0
+VS083;12345678;Vero|Stephanie|Female|vero95@gmail.com;08/07/1998;,Test2;0
+IE2421;;||Male|;24/09/1999;;1
+IE24991;123456789;Ivan|Ezechial|Male|ivan.suratnO@gmail.com;24/09/1999;;0
+FS09138;12345678;Frendy|Susanto|male|frendy@gmail.com;09/01/2000;;0
+BS22808;budi111222;budi|santoso|m|budi_santoso@gmail.com;22/09/1221;;0
+Frendy222;12345678;Frendy|Susanto|Male|frendy222@gmail.com;09/01/2000;;0
